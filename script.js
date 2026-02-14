@@ -12,14 +12,15 @@ function getComputerChoice(){
 
 function getHumanChoices(){
    let userChoice = prompt("enter rock, paper or scissors")
-   return userChoice
+   if (userChoice === null) return null
+   return userChoice.toLowerCase().trim()
 }
 
 let humanScore = 0;
 let computerScore = 0;
 
 function playRound(humanChoice, computerChoice){
-   if (humanChoice == "rock" && computerChoice == "scissor"){
+   if (humanChoice == "rock" && computerChoice == "scissors"){
       humanScore = humanScore + 1;
       return "you win! rock beats scissors"
    }else if (humanChoice == "paper" && computerChoice == "scissors"){
@@ -28,7 +29,7 @@ function playRound(humanChoice, computerChoice){
    }else if (humanChoice == "scissors" && computerChoice == "rock"){
       computerScore = computerScore + 1;
       return "you loose! rock beats scissors"
-   }else if (humanChoice == "rock" && computerScore == "paper"){
+   }else if (humanChoice == "rock" && computerChoice == "paper"){
       computerScore = computerScore + 1;
       return "you loose! paper beats rock"
    }else if (humanChoice == "paper" && computerChoice == "rock"){
@@ -38,22 +39,12 @@ function playRound(humanChoice, computerChoice){
       humanScore = humanScore + 1;
       return "you win! scissors beats paper"
    }
+   // tie or invalid input
+   if (humanChoice === computerChoice) {
+      return "It's a tie!"
+   }
+   return "Invalid input — please enter rock, paper, or scissors"
 }
-//console.log (playRound(getHumanChoices(), getComputerChoice()))
-
-//if (playRound.includes("win")){
-  // for (humanSource = 0; humanSource <= 5; humanSource++){
-    //  console.log(humanSource)
-   //}
-//}else {
-  // for(computerScore = 0; computerScore <=5; computerScore++){
-    //  console.log(computerScore)
-   //}
-
-//}
-
-
-   
 
 function playGame(){
   for (let i = 0; i<5; i++) {
@@ -63,14 +54,6 @@ function playGame(){
    console.log(`your score is ${humanScore} and computer score is ${computerScore}`)
    console.log(result)
   }
-  //let result = playRound(humanSelection, computerSelection)
-  //console.log(result)
-   //if (humanScore < computerScore){
-     // console.log("you loose")
-   //}else {
-     // console.log("you win")
-   //}
 }
-//let result = playRound(humanSelection, computerSelection)
-//console.log(result)
+
 playGame()
